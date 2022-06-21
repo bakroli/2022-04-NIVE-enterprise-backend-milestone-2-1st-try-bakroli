@@ -3,7 +3,6 @@ package com.codecool.spellcool.service;
 import com.codecool.spellcool.model.Apprentice;
 import com.codecool.spellcool.model.StudentHouse;
 import com.codecool.spellcool.model.Wizard;
-import com.codecool.spellcool.repository.ApprenticeRepository;
 import com.codecool.spellcool.repository.WizardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,12 +14,10 @@ import java.util.List;
 public class WizardService {
 
     private WizardRepository wizardRepository;
-    private ApprenticeRepository apprenticeRepository;
 
     @Autowired
-    public WizardService(WizardRepository wizardRepository, ApprenticeRepository apprenticeRepository) {
+    public WizardService(WizardRepository wizardRepository) {
         this.wizardRepository = wizardRepository;
-        this.apprenticeRepository = apprenticeRepository;
     }
 
     public List<Wizard> getAllWizards() {

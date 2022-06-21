@@ -31,7 +31,10 @@ public class ApprenticeService {
     }
 
     public Apprentice updateApprentice(Apprentice apprentice) {
-        apprenticeRepository.findById(apprentice.getId()).orElseThrow();
+        Apprentice apprenticeOld = apprenticeRepository.findById(apprentice.getId()).orElseThrow();
+        if (apprentice.getHouse() == null) {
+            apprentice.setHouse(apprenticeOld.getHouse());
+        }
         apprenticeRepository.save(apprentice);
         return apprentice;
     }

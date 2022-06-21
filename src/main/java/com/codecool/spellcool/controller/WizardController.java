@@ -8,7 +8,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -42,11 +41,10 @@ public class WizardController {
         if (bindingResult.hasErrors()) {
             return ResponseEntity.badRequest().body(null);
         }
-        if (wizard.getApprentices().size()==0) {
+        if (wizard.getApprentices().size() == 0) {
             return ResponseEntity.badRequest().body(null);
         }
         return ResponseEntity.ok(wizardService.saveWizard(wizard));
-
     }
 
     @DeleteMapping("/{id}")

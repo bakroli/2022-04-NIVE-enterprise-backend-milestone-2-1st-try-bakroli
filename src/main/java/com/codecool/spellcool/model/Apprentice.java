@@ -21,7 +21,7 @@ public class Apprentice {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull @NotEmpty @NotBlank
+    @NotNull @NotBlank @NotEmpty
     private String name;
 
     @Enumerated(EnumType.STRING)

@@ -4,7 +4,6 @@ import com.codecool.spellcool.model.Apprentice;
 import com.codecool.spellcool.service.ApprenticeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,13 +44,12 @@ public class ApprenticeController {
         return ResponseEntity.ok(apprenticeService.saveApprentice(apprentice));
     }
 
-    @PutMapping
-    public ResponseEntity<Apprentice> updateApprentice(@Valid @RequestBody Apprentice apprentice, BindingResult bindingResult) {
+    @PutMapping("/{id}")
+    public ResponseEntity<Apprentice> updateApprentice(@PathVariable("id") Long id, @Valid @RequestBody Apprentice apprentice, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return ResponseEntity.badRequest().body(null);
         }
         try {
-            //apprenticeService.updateApprentice(apprentice);
             return ResponseEntity.ok().body(apprenticeService.updateApprentice(apprentice));
         } catch (NoSuchElementException e) {
             return ResponseEntity.badRequest().build();
