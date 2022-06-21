@@ -21,7 +21,7 @@ public class ApprenticeService {
         return apprenticeRepository.findAll();
     }
 
-    public Apprentice getApprenticeById(Long id) {
+    public Apprentice getApprenticeById(long id) {
         return apprenticeRepository.findById(id).orElseThrow();
     }
 
@@ -39,7 +39,8 @@ public class ApprenticeService {
         return apprentice;
     }
 
-    public void deleteApprenticeById(Long id) {
+    public void deleteApprenticeById(long id) {
         apprenticeRepository.deleteById(id);
     }
+
 }

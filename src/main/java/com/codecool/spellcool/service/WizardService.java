@@ -24,7 +24,7 @@ public class WizardService {
         return wizardRepository.findAll();
     }
 
-    public Wizard getWizardById(Long id) {
+    public Wizard getWizardById(long id) {
         return wizardRepository.findById(id).orElseThrow();
     }
 
@@ -33,7 +33,7 @@ public class WizardService {
         return wizard;
     }
 
-    public void deleteWizardById(Long id) {
+    public void deleteWizardById(long id) {
         wizardRepository.deleteById(id);
     }
 
@@ -65,4 +65,5 @@ public class WizardService {
         }
         return diverseWizards;
     }
+
 }

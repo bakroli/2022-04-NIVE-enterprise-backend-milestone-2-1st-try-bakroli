@@ -28,7 +28,7 @@ public class ApprenticeController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Apprentice> getApprenticeById(@PathVariable("id") Long id) {
+    public ResponseEntity<Apprentice> getApprenticeById(@PathVariable("id") long id) {
         try {
             return ResponseEntity.ok().body(apprenticeService.getApprenticeById(id));
         } catch (NoSuchElementException e) {
@@ -45,8 +45,8 @@ public class ApprenticeController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Apprentice> updateApprentice(@PathVariable("id") Long id, @Valid @RequestBody Apprentice apprentice, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
+    public ResponseEntity<Apprentice> updateApprentice(@PathVariable("id") long id, @Valid @RequestBody Apprentice apprentice, BindingResult bindingResult) {
+        if (bindingResult.hasErrors() || (id != apprentice.getId())) {
             return ResponseEntity.badRequest().body(null);
         }
         try {
@@ -57,7 +57,7 @@ public class ApprenticeController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteApprenticeById(@PathVariable("id") Long id) {
+    public void deleteApprenticeById(@PathVariable("id") long id) {
         apprenticeService.deleteApprenticeById(id);
     }
 }

@@ -28,7 +28,7 @@ public class WizardController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Wizard> getWizardById(@PathVariable("id") Long id) {
+    public ResponseEntity<Wizard> getWizardById(@PathVariable("id") long id) {
         try {
             return ResponseEntity.ok().body(wizardService.getWizardById(id));
         } catch (NoSuchElementException e) {
@@ -48,7 +48,7 @@ public class WizardController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteWizardById(@PathVariable("id") Long id) {
+    public void deleteWizardById(@PathVariable("id") long id) {
         wizardService.deleteWizardById(id);
     }
 
